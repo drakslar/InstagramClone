@@ -12,6 +12,8 @@
 		E0824EE120932198002C4803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0824EDF20932198002C4803 /* Main.storyboard */; };
 		E0824EE32093219A002C4803 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0824EE22093219A002C4803 /* Assets.xcassets */; };
 		E0824EE62093219A002C4803 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0824EE42093219A002C4803 /* LaunchScreen.storyboard */; };
+		E0824EEF20934D4B002C4803 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0824EEE20934D4B002C4803 /* UIColorExtension.swift */; };
+		E0824EF1209357A9002C4803 /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0824EF0209357A9002C4803 /* AnchorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		E0824EE22093219A002C4803 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0824EE52093219A002C4803 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0824EE72093219A002C4803 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0824EEE20934D4B002C4803 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		E0824EF0209357A9002C4803 /* AnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		E0824EDA20932198002C4803 /* InstagramClone */ = {
 			isa = PBXGroup;
 			children = (
+				E0824EED20934CE6002C4803 /* Extensions */,
 				E0824EDB20932198002C4803 /* AppDelegate.swift */,
 				E0824EDD20932198002C4803 /* ViewController.swift */,
 				E0824EDF20932198002C4803 /* Main.storyboard */,
@@ -62,6 +67,15 @@
 				E0824EE72093219A002C4803 /* Info.plist */,
 			);
 			path = InstagramClone;
+			sourceTree = "<group>";
+		};
+		E0824EED20934CE6002C4803 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E0824EEE20934D4B002C4803 /* UIColorExtension.swift */,
+				E0824EF0209357A9002C4803 /* AnchorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0824EF1209357A9002C4803 /* AnchorExtension.swift in Sources */,
 				E0824EDE20932198002C4803 /* ViewController.swift in Sources */,
 				E0824EDC20932198002C4803 /* AppDelegate.swift in Sources */,
+				E0824EEF20934D4B002C4803 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

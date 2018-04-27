@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "plus_photo").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -48,7 +47,7 @@ class ViewController: UIViewController {
     let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
-        button.backgroundColor = UIColor(red: 149/255, green: 204/255, blue: 244/255, alpha: 1)
+        button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
@@ -58,18 +57,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(plusPhotoButton)
-        
         setupUI()
     }
     
     fileprivate func setupUI() {
-        NSLayoutConstraint.activate([
-            plusPhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            plusPhotoButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
-            plusPhotoButton.widthAnchor.constraint(equalToConstant: 140),
-            plusPhotoButton.heightAnchor.constraint(equalToConstant: 140)
-            ])
+        view.addSubview(plusPhotoButton)
+        
+        plusPhotoButton.anchor(x: view.centerXAnchor, y: nil, top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
         
         setupInputFields()
     }
@@ -79,16 +73,10 @@ class ViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
         stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(stackView)
         
-        NSLayoutConstraint.activate([
-            stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-            stackView.topAnchor.constraint(equalTo: plusPhotoButton.bottomAnchor, constant: 20),
-            stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-            stackView.heightAnchor.constraint(equalToConstant: 200)
-            ])
+        stackView.anchor(x: nil, y: nil, top: plusPhotoButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 200)
     }
     
     
