@@ -10,6 +10,8 @@
 		DE8A9DA12E07E3055F94813E /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F4134D52FC2C340D376067A /* Pods_InstagramClone.framework */; };
 		E034ACEB20A34B6E0016B75E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACEA20A34B6E0016B75E /* MainTabBarController.swift */; };
 		E034ACEE20A34D050016B75E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACED20A34D050016B75E /* UserProfileController.swift */; };
+		E034ACF120A360030016B75E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF020A360030016B75E /* UserProfileHeader.swift */; };
+		E034ACF420A480290016B75E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF320A480290016B75E /* User.swift */; };
 		E0824EDC20932198002C4803 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0824EDB20932198002C4803 /* AppDelegate.swift */; };
 		E0824EDE20932198002C4803 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0824EDD20932198002C4803 /* SignUpController.swift */; };
 		E0824EE120932198002C4803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0824EDF20932198002C4803 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 		A4772BF2A3DE236FB2BFF7F0 /* Pods-InstagramClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramClone/Pods-InstagramClone.release.xcconfig"; sourceTree = "<group>"; };
 		E034ACEA20A34B6E0016B75E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E034ACED20A34D050016B75E /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		E034ACF020A360030016B75E /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		E034ACF320A480290016B75E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E0824ED820932198002C4803 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0824EDB20932198002C4803 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0824EDD20932198002C4803 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -55,9 +59,25 @@
 			children = (
 				E0824EDD20932198002C4803 /* SignUpController.swift */,
 				E034ACEA20A34B6E0016B75E /* MainTabBarController.swift */,
-				E034ACED20A34D050016B75E /* UserProfileController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E034ACEF20A35FB60016B75E /* UserProfil */ = {
+			isa = PBXGroup;
+			children = (
+				E034ACED20A34D050016B75E /* UserProfileController.swift */,
+				E034ACF020A360030016B75E /* UserProfileHeader.swift */,
+			);
+			path = UserProfil;
+			sourceTree = "<group>";
+		};
+		E034ACF220A4800D0016B75E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E034ACF320A480290016B75E /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E0824ECF20932198002C4803 = {
@@ -82,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				E034ACEC20A34C690016B75E /* Controller */,
+				E034ACEF20A35FB60016B75E /* UserProfil */,
+				E034ACF220A4800D0016B75E /* Model */,
 				E0824EED20934CE6002C4803 /* Extensions */,
 				E0824EDB20932198002C4803 /* AppDelegate.swift */,
 				E0824EDF20932198002C4803 /* Main.storyboard */,
@@ -239,8 +261,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0824EF1209357A9002C4803 /* AnchorExtension.swift in Sources */,
+				E034ACF120A360030016B75E /* UserProfileHeader.swift in Sources */,
 				E0824EDE20932198002C4803 /* SignUpController.swift in Sources */,
 				E034ACEE20A34D050016B75E /* UserProfileController.swift in Sources */,
+				E034ACF420A480290016B75E /* User.swift in Sources */,
 				E034ACEB20A34B6E0016B75E /* MainTabBarController.swift in Sources */,
 				E0824EDC20932198002C4803 /* AppDelegate.swift in Sources */,
 				E0824EEF20934D4B002C4803 /* UIColorExtension.swift in Sources */,
