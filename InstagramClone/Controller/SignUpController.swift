@@ -144,7 +144,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         }
     }
     
-    fileprivate func setupUI() {
+    private func setupUI() {
         view.addSubview(plusPhotoButton)
         
         plusPhotoButton.anchor(x: view.centerXAnchor, y: nil, top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 140, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
@@ -152,7 +152,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         setupInputFields()
     }
     
-    fileprivate func setupInputFields() {
+    private func setupInputFields() {
         let stackView = UIStackView(arrangedSubviews: [emailTextField, usernameTextField, passwordTextField, signUpButton])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
