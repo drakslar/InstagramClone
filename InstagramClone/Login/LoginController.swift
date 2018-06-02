@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
     
@@ -28,7 +29,7 @@ class LoginController: UIViewController {
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 16)
-//        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
     }()
     
@@ -39,7 +40,7 @@ class LoginController: UIViewController {
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 16)
-//        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
     }()
     
@@ -50,7 +51,7 @@ class LoginController: UIViewController {
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
-//        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         button.isEnabled = false
         return button
     }()
@@ -74,6 +75,22 @@ class LoginController: UIViewController {
         setupUI()
     }
     
+    @objc private func handleLogin() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if let error = error {
+                print("Failed to sign in with email:", error)
+                return
+            }
+            
+            guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+            
+            mainTabBarController.setupViewControllers()
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -86,6 +103,18 @@ class LoginController: UIViewController {
         
         view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.anchor(x: nil, y: nil, top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+    }
+    
+    @objc private func handleTextInputChange() {
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        
+        if isFormValid {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+        }
     }
     
     private func setupInputFields() {
