@@ -13,6 +13,7 @@
 		E034ACEE20A34D050016B75E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACED20A34D050016B75E /* UserProfileController.swift */; };
 		E034ACF120A360030016B75E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF020A360030016B75E /* UserProfileHeader.swift */; };
 		E034ACF420A480290016B75E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF320A480290016B75E /* User.swift */; };
+		E0631D7720C83DCF00A7DF43 /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0631D7620C83DCF00A7DF43 /* PhotoSelectorController.swift */; };
 		E0824EDC20932198002C4803 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0824EDB20932198002C4803 /* AppDelegate.swift */; };
 		E0824EDE20932198002C4803 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0824EDD20932198002C4803 /* SignUpController.swift */; };
 		E0824EE120932198002C4803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0824EDF20932198002C4803 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		E034ACED20A34D050016B75E /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		E034ACF020A360030016B75E /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		E034ACF320A480290016B75E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E0631D7620C83DCF00A7DF43 /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		E0824ED820932198002C4803 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0824EDB20932198002C4803 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0824EDD20932198002C4803 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E0631D7520C83CF200A7DF43 /* AddNewPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				E0631D7620C83DCF00A7DF43 /* PhotoSelectorController.swift */,
+			);
+			path = AddNewPhoto;
+			sourceTree = "<group>";
+		};
 		E0824ECF20932198002C4803 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 			children = (
 				E02BA08320A897BB002FC477 /* Login */,
 				E034ACEC20A34C690016B75E /* MainTab */,
+				E0631D7520C83CF200A7DF43 /* AddNewPhoto */,
 				E034ACEF20A35FB60016B75E /* UserProfil */,
 				E034ACF220A4800D0016B75E /* Model */,
 				E0824EED20934CE6002C4803 /* Extensions */,
@@ -280,6 +291,7 @@
 				E034ACEB20A34B6E0016B75E /* MainTabBarController.swift in Sources */,
 				E0824EDC20932198002C4803 /* AppDelegate.swift in Sources */,
 				E0824EEF20934D4B002C4803 /* UIColorExtension.swift in Sources */,
+				E0631D7720C83DCF00A7DF43 /* PhotoSelectorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
