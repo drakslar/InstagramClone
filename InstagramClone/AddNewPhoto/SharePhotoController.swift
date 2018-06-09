@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SharePhotoController: UIViewController {
     
@@ -55,7 +56,39 @@ class SharePhotoController: UIViewController {
     }
     
     @objc private func handleShare() {
-        print("Sharing Photo...")
+        guard let image = selectedImage else { return }
+        guard let caption = textView.text, caption.count > 0 else { return }
+        guard let uploadData = UIImageJPEGRepresentation(image, 0.5) else { return }
+        
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        
+        let filename = NSUUID().uuidString
+        Storage.storage().reference().child("posts").child(filename).putData(uploadData, metadata: nil) { (metadata, error) in
+            if let error = error {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                print("Failed to upload post image:", error)
+                return
+            }
+            Storage.storage().reference().child("posts").child(filename).downloadURL(completion: { (url, error) in
+                guard let imageURL = url?.absoluteString else { return }
+                self.saveToDatabase(imageUrl: imageURL, caption: caption)
+            })
+        }
+    }
+    
+    private func saveToDatabase(imageUrl: String, caption: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let imageSize = selectedImage?.size else { return }
+        
+        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": imageSize.width, "imageHeight": imageSize.height, "creationDate": Date().timeIntervalSince1970] as [String : Any]
+        Database.database().reference().child("posts").child(uid).childByAutoId().updateChildValues(values) { (error, reference) in
+            if let error = error {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                print("Failed to save post to DB", error)
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override var prefersStatusBarHidden: Bool {

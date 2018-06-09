@@ -162,7 +162,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     private func setupUI() {
         view.addSubview(plusPhotoButton)
         
-        plusPhotoButton.anchor(x: view.centerXAnchor, y: nil, top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 140, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
+        plusPhotoButton.anchor(x: view.centerXAnchor, y: nil, top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
         
         setupInputFields()
         
