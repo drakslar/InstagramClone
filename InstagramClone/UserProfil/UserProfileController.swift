@@ -21,28 +21,24 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         collectionView?.backgroundColor = .white
         navigationItem.title = "User Profile"
-        
-        fetchUser()
-        
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView?.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
         
+        fetchUser()
         setupLogoutButton()
-        fetchPosts()
+        fetchOrderedPosts()
     }
     
-    private func fetchPosts() {
+    private func fetchOrderedPosts() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        Database.database().reference().child("posts").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            dictionaries.forEach({ (key, value) in
-                guard let dictionary = value as? [String: Any] else { return }
-                let post = Post(dictionary: dictionary)
-                self.posts.append(post)
-            })
+        let ref = Database.database().reference().child("posts").child(uid).queryOrdered(byChild: "createDate")
+        ref.observe(.childAdded, with: { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            let post = Post(dictionary: dictionary)
+            self.posts.append(post)
             self.collectionView?.reloadData()
         }) { (error) in
-            print("Failed to fetch posts:", error)
+            print("Failed to fetch ordered posts:", error)
         }
     }
     
