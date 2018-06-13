@@ -13,6 +13,8 @@
 		E034ACEE20A34D050016B75E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACED20A34D050016B75E /* UserProfileController.swift */; };
 		E034ACF120A360030016B75E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF020A360030016B75E /* UserProfileHeader.swift */; };
 		E034ACF420A480290016B75E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF320A480290016B75E /* User.swift */; };
+		E060FE6220CEEAE600212B76 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060FE6120CEEAE600212B76 /* Post.swift */; };
+		E060FE6420CEECF600212B76 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060FE6320CEECF600212B76 /* UserProfilePhotoCell.swift */; };
 		E0631D7720C83DCF00A7DF43 /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0631D7620C83DCF00A7DF43 /* PhotoSelectorController.swift */; };
 		E0631D7920C9A8C800A7DF43 /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0631D7820C9A8C800A7DF43 /* PhotoSelectorCell.swift */; };
 		E0631D7B20CAB7AC00A7DF43 /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0631D7A20CAB7AC00A7DF43 /* PhotoSelectorHeader.swift */; };
@@ -36,6 +38,8 @@
 		E034ACED20A34D050016B75E /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		E034ACF020A360030016B75E /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		E034ACF320A480290016B75E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E060FE6120CEEAE600212B76 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		E060FE6320CEECF600212B76 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
 		E0631D7620C83DCF00A7DF43 /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		E0631D7820C9A8C800A7DF43 /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		E0631D7A20CAB7AC00A7DF43 /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			children = (
 				E034ACED20A34D050016B75E /* UserProfileController.swift */,
 				E034ACF020A360030016B75E /* UserProfileHeader.swift */,
+				E060FE6320CEECF600212B76 /* UserProfilePhotoCell.swift */,
 			);
 			path = UserProfil;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				E034ACF320A480290016B75E /* User.swift */,
+				E060FE6120CEEAE600212B76 /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +302,8 @@
 				E0824EF1209357A9002C4803 /* AnchorExtension.swift in Sources */,
 				E034ACF120A360030016B75E /* UserProfileHeader.swift in Sources */,
 				E0824EDE20932198002C4803 /* SignUpController.swift in Sources */,
+				E060FE6420CEECF600212B76 /* UserProfilePhotoCell.swift in Sources */,
+				E060FE6220CEEAE600212B76 /* Post.swift in Sources */,
 				E034ACEE20A34D050016B75E /* UserProfileController.swift in Sources */,
 				E02BA08520A897E2002FC477 /* LoginController.swift in Sources */,
 				E034ACF420A480290016B75E /* User.swift in Sources */,

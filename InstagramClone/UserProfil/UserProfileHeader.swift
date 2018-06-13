@@ -19,8 +19,7 @@ class UserProfileHeader: UICollectionViewCell {
     }
     
     let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .red
+        let imageView = UIImageView() 
         return imageView
     }()
     
