@@ -13,7 +13,12 @@ class HomePostCell: UICollectionViewCell {
     var post: Post? {
         didSet {
             guard let postImageUrl = post?.imageUrl else { return }
+            guard let profileImageUrl = post?.user.profileImageUrl else { return }
+            
+            usernameLabel.text = post?.user.username
+            userProfileImageView.loadImage(urlString: profileImageUrl)
             photoImageView.loadImage(urlString: postImageUrl)
+            setupAttributedCaption()
         }
     }
     
@@ -21,7 +26,6 @@ class HomePostCell: UICollectionViewCell {
         let imageView = CustomImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .blue
         imageView.layer.cornerRadius = 40 / 2
         return imageView
     }()
@@ -73,11 +77,6 @@ class HomePostCell: UICollectionViewCell {
     
     let captionLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "Username", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: " Some caption text that will perhaps wrap onto next line.", attributes: [.font: UIFont.systemFont(ofSize: 14)]))
-        attributedText.append(NSAttributedString(string: "\n\n", attributes: [.font: UIFont.systemFont(ofSize: 4)]))
-        attributedText.append(NSAttributedString(string: "1 week ago", attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
-        label.attributedText = attributedText
         label.numberOfLines = 0
         return label
     }()
@@ -103,6 +102,15 @@ class HomePostCell: UICollectionViewCell {
         
         addSubview(captionLabel)
         captionLabel.anchor(x: nil, y: nil, top: likeButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
+    }
+    
+    private func setupAttributedCaption() {
+        guard let post = self.post else { return }
+        let attributedText = NSMutableAttributedString(string: post.user.profileImageUrl, attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: " \(post.caption)", attributes: [.font: UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: "\n\n", attributes: [.font: UIFont.systemFont(ofSize: 4)]))
+        attributedText.append(NSAttributedString(string: "1 week ago", attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
+        captionLabel.attributedText = attributedText
     }
     
     private func setupActionButtons() {
