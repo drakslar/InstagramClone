@@ -26,25 +26,23 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     private func fetchPosts() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let userDictionary = snapshot.value as? [String: Any] else { return }
-            let user = User(dictionary: userDictionary)
-            
-            Database.database().reference().child("posts").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                guard let dictionaries = snapshot.value as? [String: Any] else { return }
-                dictionaries.forEach({ (key, value) in
-                    guard let dictionary = value as? [String: Any] else { return }
-                    let post = Post(user: user, dictionary: dictionary)
-                    self.posts.append(post)
-                })
-                self.collectionView?.reloadData()
-            }) { (error) in
-                print("Failed to fetch posts:", error)
-            }
+        Database.fetchUserWithUID(uid: uid) { (user) in
+            self.fetchPostsWithUser(user: user)
+        }
+    }
+    
+    private func fetchPostsWithUser(user: User) {
+        Database.database().reference().child("posts").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            dictionaries.forEach({ (key, value) in
+                guard let dictionary = value as? [String: Any] else { return }
+                let post = Post(user: user, dictionary: dictionary)
+                self.posts.append(post)
+            })
+            self.collectionView?.reloadData()
         }) { (error) in
-            print("Failed to fetch user for posts:", error)
-        } 
+            print("Failed to fetch posts:", error)
+        }
     }
     
     private func setupNavigationItems() {

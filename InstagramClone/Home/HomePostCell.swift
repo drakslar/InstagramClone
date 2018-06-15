@@ -106,7 +106,7 @@ class HomePostCell: UICollectionViewCell {
     
     private func setupAttributedCaption() {
         guard let post = self.post else { return }
-        let attributedText = NSMutableAttributedString(string: post.user.profileImageUrl, attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: post.user.username, attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
         attributedText.append(NSAttributedString(string: " \(post.caption)", attributes: [.font: UIFont.systemFont(ofSize: 14)]))
         attributedText.append(NSAttributedString(string: "\n\n", attributes: [.font: UIFont.systemFont(ofSize: 4)]))
         attributedText.append(NSAttributedString(string: "1 week ago", attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
