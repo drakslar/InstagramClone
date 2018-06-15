@@ -31,6 +31,8 @@
 		E0824EF1209357A9002C4803 /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0824EF0209357A9002C4803 /* AnchorExtension.swift */; };
 		E0824EF320936640002C4803 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0824EF220936640002C4803 /* GoogleService-Info.plist */; };
 		E08C47E420D3BA6A00E94A7D /* DatabaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C47E320D3BA6A00E94A7D /* DatabaseExtension.swift */; };
+		E08C47E720D3FF9300E94A7D /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C47E620D3FF9300E94A7D /* UserSearchController.swift */; };
+		E08C47E920D40A9600E94A7D /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C47E820D40A9600E94A7D /* UserSearchCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		E0824EF0209357A9002C4803 /* AnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorExtension.swift; sourceTree = "<group>"; };
 		E0824EF220936640002C4803 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E08C47E320D3BA6A00E94A7D /* DatabaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseExtension.swift; sourceTree = "<group>"; };
+		E08C47E620D3FF9300E94A7D /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
+		E08C47E820D40A9600E94A7D /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 				E02BA08320A897BB002FC477 /* Login */,
 				E034ACEC20A34C690016B75E /* MainTab */,
 				E063E29F20D17ED2004EADC4 /* Home */,
+				E08C47E520D3FF6000E94A7D /* Search */,
 				E0631D7520C83CF200A7DF43 /* AddNewPhoto */,
 				E034ACEF20A35FB60016B75E /* UserProfil */,
 				E034ACF220A4800D0016B75E /* Model */,
@@ -179,6 +184,15 @@
 				E08C47E320D3BA6A00E94A7D /* DatabaseExtension.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E08C47E520D3FF6000E94A7D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E08C47E620D3FF9300E94A7D /* UserSearchController.swift */,
+				E08C47E820D40A9600E94A7D /* UserSearchCell.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		F10B87DBD4E6719213ACBF3F /* Frameworks */ = {
@@ -328,6 +342,7 @@
 				E060FE6220CEEAE600212B76 /* Post.swift in Sources */,
 				E034ACEE20A34D050016B75E /* UserProfileController.swift in Sources */,
 				E063E2A120D17F82004EADC4 /* HomeController.swift in Sources */,
+				E08C47E720D3FF9300E94A7D /* UserSearchController.swift in Sources */,
 				E02BA08520A897E2002FC477 /* LoginController.swift in Sources */,
 				E063E29E20D16BA6004EADC4 /* CustomImageView.swift in Sources */,
 				E034ACF420A480290016B75E /* User.swift in Sources */,
@@ -335,6 +350,7 @@
 				E034ACEB20A34B6E0016B75E /* MainTabBarController.swift in Sources */,
 				E0824EDC20932198002C4803 /* AppDelegate.swift in Sources */,
 				E0824EEF20934D4B002C4803 /* UIColorExtension.swift in Sources */,
+				E08C47E920D40A9600E94A7D /* UserSearchCell.swift in Sources */,
 				E0631D7720C83DCF00A7DF43 /* PhotoSelectorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
