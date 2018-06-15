@@ -12,6 +12,7 @@ import Firebase
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var user: User?
+    var userId: String?
     var headerId = "headerId"
     var cellId = "cellId"
     var posts = [Post]()
@@ -20,17 +21,15 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         super.viewDidLoad()
         
         collectionView?.backgroundColor = .white
-        navigationItem.title = "User Profile"
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView?.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
         
         fetchUser()
         setupLogoutButton()
-        fetchOrderedPosts()
     }
     
     private func fetchOrderedPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = self.user?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid).queryOrdered(byChild: "createDate")
         ref.observe(.childAdded, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
@@ -77,11 +76,12 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     private func fetchUser() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let uid = userId ?? Auth.auth().currentUser?.uid ?? ""
         Database.fetchUserWithUID(uid: uid) { (user) in
             self.user = user
             self.navigationItem.title = self.user?.username
             self.collectionView?.reloadData()
+            self.fetchOrderedPosts()
         } 
     }
     
@@ -91,22 +91,17 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     @objc private func handleLogout() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
         alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
             do {
                 try Auth.auth().signOut()
-                
                 let loginController = LoginController()
                 let navController = UINavigationController(rootViewController: loginController)
-                
                 self.present(navController, animated: true, completion: nil)
             } catch let signOutError {
                 print("Failed to sign out:", signOutError)
             }
         }))
-        
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         present(alertController, animated: true, completion: nil)
     }
     
