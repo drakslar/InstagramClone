@@ -146,7 +146,7 @@ class UserProfileHeader: UICollectionViewCell {
                 }
                 self.setupFollowStyle()
             }
-        } else {
+        } else if editProfileFollowButton.titleLabel?.text == "Follow" {
             let values = [userId: 1]
             ref.updateChildValues(values) { (error, ref) in
                 if let error = error {
@@ -155,6 +155,8 @@ class UserProfileHeader: UICollectionViewCell {
                 }
                 self.setupUnfollowStyle()
             }
+        } else {
+            print("Edit profile")
         }
     }
     
