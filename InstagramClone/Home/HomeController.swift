@@ -17,10 +17,29 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: SharePhotoController.updateFeedNotificationName, object: nil)
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        
         collectionView?.backgroundColor = .white
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.refreshControl = refreshControl
         
         setupNavigationItems()
+        fetchAllPosts()
+    }
+    
+    @objc private func handleUpdateFeed() {
+        handleRefresh()
+    }
+    
+    @objc private func handleRefresh() {
+        self.posts.removeAll()
+        fetchAllPosts()
+    }
+    
+    private func fetchAllPosts() {
         fetchPosts()
         fetchFollowingUserIds()
     }
@@ -48,6 +67,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     private func fetchPostsWithUser(user: User) {
         Database.database().reference().child("posts").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            self.collectionView?.refreshControl?.endRefreshing()
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach({ (key, value) in
                 guard let dictionary = value as? [String: Any] else { return }
@@ -79,7 +99,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
-        cell.post = posts[indexPath.item]
+        if indexPath.item < posts.count {
+            cell.post = posts[indexPath.item]
+        }
         return cell
     }
 }
