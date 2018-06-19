@@ -9,7 +9,9 @@
 import UIKit
 import AVFoundation
 
-class CameraController: UIViewController {
+class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
+    
+    let output = AVCapturePhotoOutput()
     
     let dismissButton: UIButton = {
         let button = UIButton(type: .system)
@@ -41,7 +43,18 @@ class CameraController: UIViewController {
     }
     
     @objc private func handleCapturePhoto() {
-        
+        let settings = AVCapturePhotoSettings()
+//        guard let previewFotmatType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
+//        settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFotmatType]
+        output.capturePhoto(with: settings, delegate: self)
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        let previewImage = UIImage(data: imageData)
+        let previewImageView = UIImageView(image: previewImage)
+        view.addSubview(previewImageView)
+        previewImageView.anchor(x: nil, y: nil, top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     private func setupHUD() {
@@ -64,7 +77,6 @@ class CameraController: UIViewController {
             print("Could not setup camera input:", error)
         }
         
-        let output = AVCapturePhotoOutput()
         if captureSession.canAddOutput(output) {
             captureSession.addOutput(output)
         }
