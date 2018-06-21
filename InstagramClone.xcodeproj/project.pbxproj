@@ -13,6 +13,7 @@
 		E034ACEE20A34D050016B75E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACED20A34D050016B75E /* UserProfileController.swift */; };
 		E034ACF120A360030016B75E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF020A360030016B75E /* UserProfileHeader.swift */; };
 		E034ACF420A480290016B75E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF320A480290016B75E /* User.swift */; };
+		E04B9E9120DBB52800D724CA /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04B9E9020DBB52800D724CA /* PreviewPhotoContainerView.swift */; };
 		E04BF1CE20D923E4006CC350 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BF1CD20D923E4006CC350 /* CameraController.swift */; };
 		E059A59C20D6E2190031F2CC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E059A59B20D6E2190031F2CC /* DateExtension.swift */; };
 		E060FE6220CEEAE600212B76 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060FE6120CEEAE600212B76 /* Post.swift */; };
@@ -46,6 +47,7 @@
 		E034ACED20A34D050016B75E /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		E034ACF020A360030016B75E /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		E034ACF320A480290016B75E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E04B9E9020DBB52800D724CA /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
 		E04BF1CD20D923E4006CC350 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		E059A59B20D6E2190031F2CC /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		E060FE6120CEEAE600212B76 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				E04BF1CD20D923E4006CC350 /* CameraController.swift */,
+				E04B9E9020DBB52800D724CA /* PreviewPhotoContainerView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				E034ACEB20A34B6E0016B75E /* MainTabBarController.swift in Sources */,
 				E059A59C20D6E2190031F2CC /* DateExtension.swift in Sources */,
 				E0824EDC20932198002C4803 /* AppDelegate.swift in Sources */,
+				E04B9E9120DBB52800D724CA /* PreviewPhotoContainerView.swift in Sources */,
 				E0824EEF20934D4B002C4803 /* UIColorExtension.swift in Sources */,
 				E08C47E920D40A9600E94A7D /* UserSearchCell.swift in Sources */,
 				E0631D7720C83DCF00A7DF43 /* PhotoSelectorController.swift in Sources */,
