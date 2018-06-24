@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		DE8A9DA12E07E3055F94813E /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F4134D52FC2C340D376067A /* Pods_InstagramClone.framework */; };
+		E02A884B20E008C200401ADA /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02A884A20E008C200401ADA /* CustomAnimationDismisser.swift */; };
 		E02BA08520A897E2002FC477 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BA08420A897E2002FC477 /* LoginController.swift */; };
 		E034ACEB20A34B6E0016B75E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACEA20A34B6E0016B75E /* MainTabBarController.swift */; };
 		E034ACEE20A34D050016B75E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACED20A34D050016B75E /* UserProfileController.swift */; };
 		E034ACF120A360030016B75E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF020A360030016B75E /* UserProfileHeader.swift */; };
 		E034ACF420A480290016B75E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E034ACF320A480290016B75E /* User.swift */; };
 		E04B9E9120DBB52800D724CA /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04B9E9020DBB52800D724CA /* PreviewPhotoContainerView.swift */; };
+		E04B9E9320DBE0DA00D724CA /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04B9E9220DBE0DA00D724CA /* CustomAnimationPresentor.swift */; };
 		E04BF1CE20D923E4006CC350 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BF1CD20D923E4006CC350 /* CameraController.swift */; };
 		E059A59C20D6E2190031F2CC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E059A59B20D6E2190031F2CC /* DateExtension.swift */; };
 		E060FE6220CEEAE600212B76 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060FE6120CEEAE600212B76 /* Post.swift */; };
@@ -42,12 +44,14 @@
 		6F4134D52FC2C340D376067A /* Pods_InstagramClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72E8DC9D428A780B6CBE54A0 /* Pods-InstagramClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramClone/Pods-InstagramClone.debug.xcconfig"; sourceTree = "<group>"; };
 		A4772BF2A3DE236FB2BFF7F0 /* Pods-InstagramClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramClone/Pods-InstagramClone.release.xcconfig"; sourceTree = "<group>"; };
+		E02A884A20E008C200401ADA /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
 		E02BA08420A897E2002FC477 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E034ACEA20A34B6E0016B75E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E034ACED20A34D050016B75E /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		E034ACF020A360030016B75E /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		E034ACF320A480290016B75E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E04B9E9020DBB52800D724CA /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
+		E04B9E9220DBE0DA00D724CA /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
 		E04BF1CD20D923E4006CC350 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		E059A59B20D6E2190031F2CC /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		E060FE6120CEEAE600212B76 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 			children = (
 				E04BF1CD20D923E4006CC350 /* CameraController.swift */,
 				E04B9E9020DBB52800D724CA /* PreviewPhotoContainerView.swift */,
+				E04B9E9220DBE0DA00D724CA /* CustomAnimationPresentor.swift */,
+				E02A884A20E008C200401ADA /* CustomAnimationDismisser.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 				E060FE6220CEEAE600212B76 /* Post.swift in Sources */,
 				E034ACEE20A34D050016B75E /* UserProfileController.swift in Sources */,
 				E063E2A120D17F82004EADC4 /* HomeController.swift in Sources */,
+				E04B9E9320DBE0DA00D724CA /* CustomAnimationPresentor.swift in Sources */,
 				E08C47E720D3FF9300E94A7D /* UserSearchController.swift in Sources */,
 				E02BA08520A897E2002FC477 /* LoginController.swift in Sources */,
 				E063E29E20D16BA6004EADC4 /* CustomImageView.swift in Sources */,
@@ -370,6 +377,7 @@
 				E0824EDC20932198002C4803 /* AppDelegate.swift in Sources */,
 				E04B9E9120DBB52800D724CA /* PreviewPhotoContainerView.swift in Sources */,
 				E0824EEF20934D4B002C4803 /* UIColorExtension.swift in Sources */,
+				E02A884B20E008C200401ADA /* CustomAnimationDismisser.swift in Sources */,
 				E08C47E920D40A9600E94A7D /* UserSearchCell.swift in Sources */,
 				E0631D7720C83DCF00A7DF43 /* PhotoSelectorController.swift in Sources */,
 			);
