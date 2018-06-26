@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
 class CommentsController: UICollectionViewController {
     
     var post: Post?
     
-    var containerView: UIView = {
+    let commentTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter Comment"
+        return textField
+    }()
+    
+    lazy var containerView: UIView = {
         let containerView = UIView() //CustomView()
         containerView.backgroundColor = .white
-        containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 50) 
+        containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
         
         let submitButton = UIButton(type: .system)
         submitButton.setTitle("Submit", for: .normal)
@@ -25,10 +32,8 @@ class CommentsController: UICollectionViewController {
         containerView.addSubview(submitButton)
         submitButton.anchor(x: nil, y: nil, top: containerView.topAnchor, left: nil, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 50, height: 0)
         
-        let textField = UITextField()
-        textField.placeholder = "Enter Comment"
-        containerView.addSubview(textField)
-        textField.anchor(x: nil, y: nil, top: containerView.topAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: submitButton.leftAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        containerView.addSubview(commentTextField)
+        commentTextField.anchor(x: nil, y: nil, top: containerView.topAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: submitButton.leftAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         return containerView
     }()
@@ -60,10 +65,19 @@ class CommentsController: UICollectionViewController {
         return true
     }
     
-    
-    
     @objc private func handleSubmit() {
-        print("...")
+        guard let postId = post?.id else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let commentText = commentTextField.text, commentText.count > 0 else { return }
+        let creationDate = Date().timeIntervalSince1970
+        let values = ["uid": uid, "text": commentText, "creationDate": creationDate] as [String : Any]
+        Database.database().reference().child("comments").child(postId).childByAutoId().updateChildValues(values) { (error, reference) in
+            if let error = error {
+                print("Failed to insert comment:", error)
+                return
+            }
+            self.commentTextField.text?.removeAll()
+        }
     }
     
 }
