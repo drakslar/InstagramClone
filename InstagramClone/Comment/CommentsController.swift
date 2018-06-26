@@ -37,6 +37,11 @@ class CommentsController: UICollectionViewController {
         containerView.addSubview(commentTextField)
         commentTextField.anchor(x: nil, y: nil, top: containerView.topAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: submitButton.leftAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
+        let lineSeparatorView = UIView()
+        lineSeparatorView.backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230)
+        containerView.addSubview(lineSeparatorView)
+        lineSeparatorView.anchor(x: nil, y: nil, top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
+        
         return containerView
     }()
     
@@ -50,7 +55,7 @@ class CommentsController: UICollectionViewController {
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0)
         collectionView?.alwaysBounceVertical = true
-        collectionView?.keyboardDismissMode = .onDrag
+        collectionView?.keyboardDismissMode = .interactive
         
         fetchComments()
     }
@@ -69,9 +74,13 @@ class CommentsController: UICollectionViewController {
         guard let postId = post?.id else { return }
         Database.database().reference().child("comments").child(postId).observe(.childAdded, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
-            let comment = Comment(dictionary: dictionary)
-            self.comments.append(comment)
-            self.collectionView?.reloadData()
+            guard let uid = dictionary["uid"] as? String else { return }
+            
+            Database.fetchUserWithUID(uid: uid, completion: { (user) in
+                let comment = Comment(user: user, dictionary: dictionary) 
+                self.comments.append(comment)
+                self.collectionView?.reloadData()
+            })
         }) { (error) in
             print("Failed to fetch comments:", error)
         }
