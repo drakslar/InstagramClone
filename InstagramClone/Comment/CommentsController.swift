@@ -12,6 +12,8 @@ import Firebase
 class CommentsController: UICollectionViewController {
     
     var post: Post?
+    var cellId = "CellId"
+    var comments = [Comment]()
     
     let commentTextField: UITextField = {
         let textField = UITextField()
@@ -42,7 +44,15 @@ class CommentsController: UICollectionViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Comments"
-        collectionView?.backgroundColor = .blue
+        
+        collectionView?.backgroundColor = .white
+        collectionView?.register(CommentCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0)
+        collectionView?.alwaysBounceVertical = true
+        collectionView?.keyboardDismissMode = .onDrag
+        
+        fetchComments()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +65,18 @@ class CommentsController: UICollectionViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    private func fetchComments() {
+        guard let postId = post?.id else { return }
+        Database.database().reference().child("comments").child(postId).observe(.childAdded, with: { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            let comment = Comment(dictionary: dictionary)
+            self.comments.append(comment)
+            self.collectionView?.reloadData()
+        }) { (error) in
+            print("Failed to fetch comments:", error)
+        }
+    }
+    
     override var inputAccessoryView: UIView? {
         get {
             return containerView
@@ -64,7 +86,7 @@ class CommentsController: UICollectionViewController {
     override var canBecomeFirstResponder: Bool {
         return true
     }
-    
+
     @objc private func handleSubmit() {
         guard let postId = post?.id else { return }
         guard let uid = Auth.auth().currentUser?.uid else { return }
